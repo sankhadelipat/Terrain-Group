@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_14th_Day_Of_FollowUp_Date__c</fullName>
+    <description>This field will return true at the 14th day of Follow-Up date</description>
+    <formula>Follow_Up_Date__c = TODAY() - 14</formula>
+    <inlineHelpText>This field will return true at the 14th day of Follow-Up date</inlineHelpText>
+    <label>Is 14th Day Of FollowUp Date</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

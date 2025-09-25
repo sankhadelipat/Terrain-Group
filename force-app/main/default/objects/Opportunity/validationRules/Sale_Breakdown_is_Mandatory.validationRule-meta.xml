@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sale_Breakdown_is_Mandatory</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL( Company_Entity__c , &quot;Terrain Elements&quot;)
+&amp;&amp;
+ISBLANK(  Sale_Breakdown__c )</errorConditionFormula>
+    <errorDisplayField>Sale_Breakdown__c</errorDisplayField>
+    <errorMessage>Sale Breakdown is Mandatory when Sale Type is Terrain Elements</errorMessage>
+</ValidationRule>

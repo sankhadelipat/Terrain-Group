@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Interior Designer /Architect - AUS WIDE</fullName>
+        <default>false</default>
+        <label>Interior Designer /Architect - AUS WIDE</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Local Council</fullName>
+        <color>#0B6FCE</color>
+        <default>false</default>
+        <label>Local Council</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Agriculture</fullName>
+        <color>#78C953</color>
+        <default>false</default>
+        <label>Agriculture</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Apparel</fullName>
+        <color>#E27001</color>
+        <default>false</default>
+        <label>Apparel</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Banking</fullName>
+        <color>#A845DC</color>
+        <default>false</default>
+        <label>Banking</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Biotechnology</fullName>
+        <color>#F3D904</color>
+        <default>false</default>
+        <label>Biotechnology</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Chemicals</fullName>
+        <color>#A53711</color>
+        <default>false</default>
+        <label>Chemicals</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Communications</fullName>
+        <color>#66E9BD</color>
+        <default>false</default>
+        <label>Communications</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Construction/Builders</fullName>
+        <color>#0B24BE</color>
+        <default>false</default>
+        <label>Construction/Builders</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Consulting</fullName>
+        <color>#419249</color>
+        <default>false</default>
+        <label>Consulting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Education</fullName>
+        <color>#B6E32E</color>
+        <default>false</default>
+        <label>Education</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Electronics</fullName>
+        <color>#641CCF</color>
+        <default>false</default>
+        <label>Electronics</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Energy</fullName>
+        <color>#F96FB7</color>
+        <default>false</default>
+        <label>Energy</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Engineering</fullName>
+        <color>#2F5D85</color>
+        <default>false</default>
+        <label>Engineering</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Entertainment</fullName>
+        <color>#AFCADF</color>
+        <default>false</default>
+        <label>Entertainment</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Environmental</fullName>
+        <color>#8F6429</color>
+        <default>false</default>
+        <label>Environmental</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Finance</fullName>
+        <color>#EFAE73</color>
+        <default>false</default>
+        <label>Finance</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Food &amp; Beverage</fullName>
+        <color>#57F17C</color>
+        <default>false</default>
+        <label>Food &amp; Beverage</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Government</fullName>
+        <color>#0B6FCE</color>
+        <default>false</default>
+        <label>Government</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Healthcare</fullName>
+        <color>#78C953</color>
+        <default>false</default>
+        <label>Healthcare</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hospitality</fullName>
+        <color>#E27001</color>
+        <default>false</default>
+        <label>Hospitality</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Insurance</fullName>
+        <color>#A845DC</color>
+        <default>false</default>
+        <label>Insurance</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Machinery</fullName>
+        <color>#F3D904</color>
+        <default>false</default>
+        <label>Machinery</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Manufacturing</fullName>
+        <color>#A53711</color>
+        <default>false</default>
+        <label>Manufacturing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Media</fullName>
+        <color>#66E9BD</color>
+        <default>false</default>
+        <label>Media</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Not For Profit</fullName>
+        <color>#0B24BE</color>
+        <default>false</default>
+        <label>Not For Profit</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <color>#419249</color>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Recreation</fullName>
+        <color>#B6E32E</color>
+        <default>false</default>
+        <label>Recreation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Retail</fullName>
+        <color>#641CCF</color>
+        <default>false</default>
+        <label>Retail</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Shipping</fullName>
+        <color>#F96FB7</color>
+        <default>false</default>
+        <label>Shipping</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Technology</fullName>
+        <color>#2F5D85</color>
+        <default>false</default>
+        <label>Technology</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Telecommunications</fullName>
+        <color>#AFCADF</color>
+        <default>false</default>
+        <label>Telecommunications</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Transportation</fullName>
+        <color>#8F6429</color>
+        <default>false</default>
+        <label>Transportation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Utilities</fullName>
+        <color>#EFAE73</color>
+        <default>false</default>
+        <label>Utilities</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Nursing Homes</fullName>
+        <color>#57F17C</color>
+        <default>false</default>
+        <label>Nursing Homes</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Retirement Villages</fullName>
+        <color>#0B6FCE</color>
+        <default>false</default>
+        <label>Retirement Villages</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sports Centres/Clubs</fullName>
+        <color>#78C953</color>
+        <default>false</default>
+        <label>Sports Centres/Clubs</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Architects</fullName>
+        <color>#E27001</color>
+        <default>false</default>
+        <label>Architects</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hospitals</fullName>
+        <color>#A845DC</color>
+        <default>false</default>
+        <label>Hospitals</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Landscapers</fullName>
+        <color>#F3D904</color>
+        <default>false</default>
+        <label>Landscapers</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Caf/Rest</fullName>
+        <color>#A53711</color>
+        <default>false</default>
+        <label>Caf/Rest</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Caravan Park</fullName>
+        <color>#66E9BD</color>
+        <default>false</default>
+        <label>Caravan Park</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SA School</fullName>
+        <color>#0B24BE</color>
+        <default>false</default>
+        <label>SA School</label>
+    </standardValue>
+    <standardValue>
+        <fullName>NT School</fullName>
+        <color>#419249</color>
+        <default>false</default>
+        <label>NT School</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Wineries</fullName>
+        <color>#B6E32E</color>
+        <default>false</default>
+        <label>Wineries</label>
+    </standardValue>
+    <standardValue>
+        <fullName>QLD SCHOOLS</fullName>
+        <color>#641CCF</color>
+        <default>false</default>
+        <label>QLD SCHOOLS</label>
+    </standardValue>
+    <standardValue>
+        <fullName>AUSTRALIA WIDE WESTFIELDS</fullName>
+        <color>#F96FB7</color>
+        <default>false</default>
+        <label>AUSTRALIA WIDE WESTFIELDS</label>
+    </standardValue>
+    <standardValue>
+        <fullName>MINES</fullName>
+        <color>#2F5D85</color>
+        <default>false</default>
+        <label>MINES</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Airports</fullName>
+        <color>#AFCADF</color>
+        <default>false</default>
+        <label>Airports</label>
+    </standardValue>
+    <standardValue>
+        <fullName>NT COUNCIL</fullName>
+        <color>#8F6429</color>
+        <default>false</default>
+        <label>NT COUNCIL</label>
+    </standardValue>
+    <standardValue>
+        <fullName>University</fullName>
+        <color>#EFAE73</color>
+        <default>false</default>
+        <label>University</label>
+    </standardValue>
+    <standardValue>
+        <fullName>TAFE</fullName>
+        <color>#57F17C</color>
+        <default>false</default>
+        <label>TAFE</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cemetery</fullName>
+        <default>false</default>
+        <label>Cemetery</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Swimming/Aquatic Centre</fullName>
+        <default>false</default>
+        <label>Swimming/Aquatic Centre</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Bowling Club</fullName>
+        <default>false</default>
+        <label>Bowling Club</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Croquet Club</fullName>
+        <default>false</default>
+        <label>Croquet Club</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Tennis Clubs</fullName>
+        <default>false</default>
+        <label>Tennis Clubs</label>
+    </standardValue>
+    <standardValue>
+        <fullName>VIC GOVT</fullName>
+        <default>false</default>
+        <label>VIC GOVT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>NSW GOVT</fullName>
+        <default>false</default>
+        <label>NSW GOVT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>QLD GOVT</fullName>
+        <default>false</default>
+        <label>QLD GOVT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>TAS GOVT</fullName>
+        <default>false</default>
+        <label>TAS GOVT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>WA GOVT</fullName>
+        <default>false</default>
+        <label>WA GOVT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>VIC SCHOOLS</fullName>
+        <default>false</default>
+        <label>VIC SCHOOLS</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Prisons</fullName>
+        <default>false</default>
+        <label>Prisons</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Kindergarten/Preschool/Chilcare</fullName>
+        <default>false</default>
+        <label>Kindergarten/Preschool/Chilcare</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hotel/Motel</fullName>
+        <default>false</default>
+        <label>Hotel/Motel</label>
+    </standardValue>
+    <standardValue>
+        <fullName>VIC Caravan &amp; Holiday Parks</fullName>
+        <default>false</default>
+        <label>VIC Caravan &amp; Holiday Parks</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Golf Clubs</fullName>
+        <default>false</default>
+        <label>Golf Clubs</label>
+    </standardValue>
+    <standardValue>
+        <fullName>VIC RETIREMENT VILLAGE</fullName>
+        <default>false</default>
+        <label>VIC RETIREMENT VILLAGE</label>
+    </standardValue>
+    <standardValue>
+        <fullName>VIC PUBLIC HOSPITAL</fullName>
+        <default>false</default>
+        <label>VIC PUBLIC HOSPITAL</label>
+    </standardValue>
+    <standardValue>
+        <fullName>VIC PRIVATE HOSPITAL</fullName>
+        <default>false</default>
+        <label>VIC PRIVATE HOSPITAL</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Landscapers VIC</fullName>
+        <default>false</default>
+        <label>Landscapers VIC</label>
+    </standardValue>
+    <standardValue>
+        <fullName>NSW SCHOOL</fullName>
+        <default>false</default>
+        <label>NSW SCHOOL</label>
+    </standardValue>
+    <standardValue>
+        <fullName>TAS SCHOOL</fullName>
+        <default>false</default>
+        <label>TAS SCHOOL</label>
+    </standardValue>
+    <standardValue>
+        <fullName>WA SCHOOL</fullName>
+        <default>false</default>
+        <label>WA SCHOOL</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Lions Clubs</fullName>
+        <default>false</default>
+        <label>Lions Clubs</label>
+    </standardValue>
+    <standardValue>
+        <fullName>E bay terrain water</fullName>
+        <default>false</default>
+        <label>E bay terrain water</label>
+    </standardValue>
+    <standardValue>
+        <fullName>NZ Architects NEW</fullName>
+        <default>false</default>
+        <label>NZ Architects NEW</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Pony Clubs</fullName>
+        <default>false</default>
+        <label>Pony Clubs</label>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Email_For_Drawings_Reminder</fullName>
+        <ccEmails>lax@delipat.com</ccEmails>
+        <description>Email For Drawings Reminder</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>selenia@terraingroup.com.au</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Automated_Email_Templates/Reminder_for_Order_Drawings</template>
+    </alerts>
+    <alerts>
+        <fullName>Reminder_Email_If_Feedback_Not_Received</fullName>
+        <ccEmails>paramita.delipat@gmail.com</ccEmails>
+        <ccEmails>laxmikanta.delipat@gmail.com</ccEmails>
+        <ccEmails>mahesh.delipat@gmail.com</ccEmails>
+        <description>Reminder Email If Feedback Not Received</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>lax@delipat.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>selenia@terraingroup.com.au</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Automated_Email_Templates/Reminder_Email_If_Feedback_Not_Received</template>
+    </alerts>
+    <alerts>
+        <fullName>Reminder_Email_To_Request_Feedback</fullName>
+        <ccEmails>paramita.delipat@gmail.com</ccEmails>
+        <ccEmails>laxmikanta.delipat@gmail.com</ccEmails>
+        <ccEmails>mahesh.delipat@gmail.com</ccEmails>
+        <description>Reminder Email To Request Feedback</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>lax@delipat.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>selenia@terraingroup.com.au</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Automated_Email_Templates/Reminder_Email_To_Request_Feedback</template>
+    </alerts>
+</Workflow>

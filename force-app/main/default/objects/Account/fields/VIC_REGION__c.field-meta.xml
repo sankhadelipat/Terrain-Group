@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VIC_REGION__c</fullName>
+    <description>Area the customer falls into on VIC map</description>
+    <label>VIC REGION TYPE</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>VIC 1</fullName>
+                <default>false</default>
+                <label>VIC 1</label>
+            </value>
+            <value>
+                <fullName>VIC 2</fullName>
+                <default>false</default>
+                <label>VIC 2</label>
+            </value>
+            <value>
+                <fullName>VIC 3</fullName>
+                <default>false</default>
+                <label>VIC 3</label>
+            </value>
+            <value>
+                <fullName>VIC 4</fullName>
+                <default>false</default>
+                <label>VIC 4</label>
+            </value>
+            <value>
+                <fullName>VIC 5</fullName>
+                <default>false</default>
+                <label>VIC 5</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

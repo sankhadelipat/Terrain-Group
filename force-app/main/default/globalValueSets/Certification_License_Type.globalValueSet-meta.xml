@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Certification</fullName>
+        <default>false</default>
+        <label>Certification</label>
+    </customValue>
+    <customValue>
+        <fullName>License</fullName>
+        <default>false</default>
+        <label>License</label>
+    </customValue>
+    <description>Created by BDD</description>
+    <masterLabel>Certification &amp; License Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

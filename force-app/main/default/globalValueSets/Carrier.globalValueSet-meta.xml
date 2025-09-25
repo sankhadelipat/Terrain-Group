@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Aceit</fullName>
+        <default>false</default>
+        <label>Aceit</label>
+    </customValue>
+    <customValue>
+        <fullName>Australis</fullName>
+        <default>false</default>
+        <label>Australis</label>
+    </customValue>
+    <customValue>
+        <fullName>APD</fullName>
+        <default>false</default>
+        <label>APD</label>
+    </customValue>
+    <customValue>
+        <fullName>Adelaide Crane Trucks</fullName>
+        <default>false</default>
+        <label>Adelaide Crane Trucks</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer Collection</fullName>
+        <default>false</default>
+        <label>Customer Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint Freight</fullName>
+        <default>false</default>
+        <label>Sprint Freight</label>
+    </customValue>
+    <customValue>
+        <fullName>Terrain Group</fullName>
+        <default>false</default>
+        <label>Terrain Group</label>
+    </customValue>
+    <customValue>
+        <fullName>TNT</fullName>
+        <default>false</default>
+        <label>TNT</label>
+    </customValue>
+    <customValue>
+        <fullName>Startrack</fullName>
+        <default>false</default>
+        <label>Startrack</label>
+    </customValue>
+    <customValue>
+        <fullName>Northline</fullName>
+        <default>false</default>
+        <label>Northline</label>
+    </customValue>
+    <customValue>
+        <fullName>Felix</fullName>
+        <default>false</default>
+        <label>Felix</label>
+    </customValue>
+    <customValue>
+        <fullName>Toll</fullName>
+        <default>false</default>
+        <label>Toll</label>
+    </customValue>
+    <customValue>
+        <fullName>Mohamed</fullName>
+        <default>false</default>
+        <label>Mohamed</label>
+    </customValue>
+    <customValue>
+        <fullName>City Crane Trucks</fullName>
+        <default>false</default>
+        <label>City Crane Trucks</label>
+    </customValue>
+    <customValue>
+        <fullName>Bays Removals</fullName>
+        <default>false</default>
+        <label>Bays Removals</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Jet</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Jet</label>
+    </customValue>
+    <customValue>
+        <fullName>Irvines</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Irvines</label>
+    </customValue>
+    <customValue>
+        <fullName>Colin - Coast to Country</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Colin - Coast to Country</label>
+    </customValue>
+    <customValue>
+        <fullName>Camerons</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Camerons</label>
+    </customValue>
+    <customValue>
+        <fullName>Ausstar</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Ausstar</label>
+    </customValue>
+    <customValue>
+        <fullName>SA Taxi Trucks</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>SA Taxi Trucks</label>
+    </customValue>
+    <customValue>
+        <fullName>Ace It Couriers</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Ace It Couriers</label>
+    </customValue>
+    <customValue>
+        <fullName>Southern Trading</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Southern Trading</label>
+    </customValue>
+    <customValue>
+        <fullName>Trouble Free</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Trouble Free</label>
+    </customValue>
+    <customValue>
+        <fullName>Pickering Transport</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Pickering Transport</label>
+    </customValue>
+    <customValue>
+        <fullName>N/A</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>N/A</label>
+    </customValue>
+    <customValue>
+        <fullName>McEvoys</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>McEvoys</label>
+    </customValue>
+    <masterLabel>Carrier</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

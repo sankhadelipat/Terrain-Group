@@ -1,0 +1,13 @@
+<body style="font-family: Arial, sans-serif; font-size: 14px;">
+<p>Hi Selenia,</p>
+
+    <p>
+      This is a reminder to request feedback from {!Order.Contact_Name__c}, regarding
+      <strong><a href="{!Order.Link}" target="_blank"> Order {!Order.OrderNumber}</a></strong> 
+       .
+    </p>
+    <br><br>
+    <p style="font-size: 10px; color:#414141;">
+      <b>Note:</b> This is a system-generated email. Please do not reply to this email.
+    </p>
+</body>

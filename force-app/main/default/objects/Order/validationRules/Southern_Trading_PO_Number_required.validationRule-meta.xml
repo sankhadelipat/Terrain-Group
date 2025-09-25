@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Southern_Trading_PO_Number_required</fullName>
+    <active>true</active>
+    <description>Created by BDD</description>
+    <errorConditionFormula>ISPICKVAL(Supplier__c ,&apos;Southern Trading&apos;) &amp;&amp; ISBLANK( Supplier_Transport_Purchase_Order_Number__c )</errorConditionFormula>
+    <errorDisplayField>Supplier_Transport_Purchase_Order_Number__c</errorDisplayField>
+    <errorMessage>Supplier Transport Purchase Order Number is required</errorMessage>
+</ValidationRule>

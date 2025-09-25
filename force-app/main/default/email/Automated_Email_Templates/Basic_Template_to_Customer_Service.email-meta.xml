@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Basic template which is sent when the quote stage goes to accepted</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Basic Template to Customer Service</name>
+    <style>none</style>
+    <subject>Notification</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supplier_Transport_Collection_required</fullName>
+    <active>true</active>
+    <description>Created by BDD</description>
+    <errorConditionFormula>ISPICKVAL( Status, &apos;Awaiting Feedback&apos;) &amp;&amp; (ISBLANK( TEXT(Freight_Company__c) ) || ISBLANK( Pick_Up_Date_From_Supplier__c ) || ISBLANK( Date_Of_Arrival_From_Supplier__c ))</errorConditionFormula>
+    <errorDisplayField>Freight_Company__c</errorDisplayField>
+    <errorMessage>Freight Company, Pick Up Date From Supplier and Date of Arrival from Supplier are required</errorMessage>
+</ValidationRule>

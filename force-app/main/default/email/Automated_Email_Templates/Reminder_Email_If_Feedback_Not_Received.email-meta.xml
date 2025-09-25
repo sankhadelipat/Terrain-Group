@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Reminder Email If Feedback Not Received</name>
+    <style>none</style>
+    <subject>Reminder: Follow Up {!Order.Contact_Name__c} for Feedback</subject>
+    <textOnly>Hi Selenia,
+
+This is a reminder to follow up {!Order.Contact_Name__c}, regarding feedback for  Order {!Order.OrderNumber} .
+
+
+
+
+Note: This is a system-generated email. Please do not reply to this email.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Claim_1_Required_Fields</fullName>
+    <active>true</active>
+    <description>Created by BDD</description>
+    <errorConditionFormula>ISPICKVAL( Status, &apos;Order Complete&apos;) &amp;&amp; (ISBLANK( Claim_1_Date__c ) || ISBLANK( Claim_1_Invoice_Number__c ) || ISBLANK( Claim_1_Amount__c ) || ISBLANK( Claim_1_Invoice_Date_Paid__c  ))</errorConditionFormula>
+    <errorDisplayField>Claim_1_Date__c</errorDisplayField>
+    <errorMessage>Claim 1 fields are required: Date, Invoice Number, Amount and Date Paid</errorMessage>
+</ValidationRule>

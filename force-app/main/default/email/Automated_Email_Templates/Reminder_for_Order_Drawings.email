@@ -1,0 +1,13 @@
+<body style="font-family: Arial, sans-serif; font-size: 14px;">
+<p>Hi Selenia,</p>
+
+    <p>
+      This is a reminder that the requested drawings for 
+      <strong><a href="{!Order.Link}" target="_blank"> {!Order.SO_Numbers_for_Drawings__c}</a></strong> for 
+      <strong><a href="https://d90000000jpabea0--updates.sandbox.lightning.force.com/{!Account.Id}" target="_blank"> {!Account.Name}</a></strong> have not been uploaded in the last 7 days.
+    </p>
+
+    <p>
+      Kindly review and take the necessary action.
+    </p>
+</body>

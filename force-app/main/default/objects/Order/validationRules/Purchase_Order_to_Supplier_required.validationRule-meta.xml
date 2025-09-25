@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Purchase_Order_to_Supplier_required</fullName>
+    <active>true</active>
+    <description>Created by BDD</description>
+    <errorConditionFormula>ISPICKVAL( Status, &apos;Awaiting Feedback&apos;) &amp;&amp; (ISBLANK( TEXT(Supplier__c) ) || ISBLANK( Supplier_Order_Number__c ) || ISBLANK( Supplier_PO_Date_Sent__c ) || ISBLANK(TG_Purchase_Order_Number__c))</errorConditionFormula>
+    <errorDisplayField>Supplier__c</errorDisplayField>
+    <errorMessage>Supplier, TG Purchase Order Number, Supplier Order Number and Supplier PO Date Sent is required</errorMessage>
+</ValidationRule>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SO_Numbers_for_Drawings__c</fullName>
+    <externalId>false</externalId>
+    <formula>SUBSTITUTE(IF(Day_7_of_Drawings_Requested__c, Supplier_Order_Number__c &amp; &quot;;&quot;, &quot;&quot;) &amp;
+  IF(Day_7_of_Drawings_Requested_2__c, Supplier_Order_Number_SO_Numb_2__c &amp; &quot;;&quot;, &quot;&quot;) &amp;
+  IF(Day_7_of_Drawings_Requested_3__c, Supplier_Order_Number_SO_Numb_3__c &amp; &quot;;&quot;, &quot;&quot;) &amp;
+  IF(Day_7_of_Drawings_Requested_4__c, Supplier_Order_Number_SO_Numb_4__c &amp; &quot;;&quot;, &quot;&quot;) &amp;
+  IF(Day_7_of_Drawings_Requested_5__c, Supplier_Order_Number_SO_Numb_5__c &amp; &quot;;&quot;, &quot;&quot;) &amp;
+  IF(Day_7_of_Drawings_Requested_6__c, Supplier_Order_Number_SO_Numb_6__c &amp; &quot;;&quot;, &quot;&quot;) &amp;
+  IF(Day_7_of_Drawings_Requested_7__c, Supplier_Order_Number_SO_Numb_7__c &amp; &quot;;&quot;, &quot;&quot;) &amp;
+  IF(Day_7_of_Drawings_Requested_8__c, Supplier_Order_Number_SO_Numb_8__c &amp; &quot;;&quot;, &quot;&quot;) &amp;
+  IF(Day_7_of_Drawings_Requested_9__c, Supplier_Order_Number_SO_Numb_9__c &amp; &quot;;&quot;, &quot;&quot;) &amp;
+  IF(Day_7_of_Drawings_Requested_10__c, Supplier_Order_Number_SO_Numb_10__c &amp; &quot;;&quot;, &quot;&quot;),
+  &quot;;&quot;, &quot; &quot;
+)</formula>
+    <label>SO Numbers for Drawings</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

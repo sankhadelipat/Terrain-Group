@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Day_7_of_Drawings_Requested_7__c</fullName>
+    <formula>AND( TODAY() = ( Drawings_Requested_7__c + 7),
+ISPICKVAL( Drawings_if_required_7__c , &apos;Yes&apos;),
+Drawings_Uploaded_7__c = false
+)</formula>
+    <label>Day 7 of Drawings Requested 7</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

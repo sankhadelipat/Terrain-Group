@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ShowPurOrderSupp2__c</fullName>
+    <formula>OR(
+  NOT(ISBLANK(TEXT(Supplier__c))),
+  NOT(ISBLANK(TG_Purchase_Order_Number__c)),
+  NOT(ISBLANK(Supplier_Order_Number__c)),
+  NOT(ISBLANK(Supplier_Approx_Ready_Date__c)),
+  NOT(ISBLANK(Purchase_Order_To_Supplier_Notes__c)),
+  NOT(ISBLANK(Other_Supplier__c)),
+  NOT(ISBLANK(Supplier_PO_Date_Sent__c)),
+  NOT(ISBLANK(TEXT(Drawings_if_required__c)))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>ShowPurOrderSupp2</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

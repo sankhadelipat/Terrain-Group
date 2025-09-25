@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_7_Days_After_Delivery_Date__c</fullName>
+    <description>This field will return true at the 7th Day of Delivery Date on Transport/Delivery sections</description>
+    <formula>OR(
+  Delivery_Date__c = TODAY() - 7,
+  Delivery_Date_2__c = TODAY() - 7,
+  Delivery_Date_3__c = TODAY() - 7,
+  Delivery_Date_4__c = TODAY() - 7,
+  Delivery_Date_5__c = TODAY() - 7,
+  Delivery_Date_6__c = TODAY() - 7,
+  Delivery_Date_7__c = TODAY() - 7,
+  Delivery_Date_8__c = TODAY() - 7,
+  Delivery_Date_9__c = TODAY() - 7,
+  Delivery_Date_10__c = TODAY() - 7
+)</formula>
+    <inlineHelpText>This field will return true at the 7th Day of Delivery Date on Transport/Delivery sections</inlineHelpText>
+    <label>Is 7 Days After Delivery Date</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

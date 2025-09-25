@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Carrier_To_Customer_5__c</fullName>
+    <label>Carrier To Customer 5</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aceit</fullName>
+                <default>false</default>
+                <label>Aceit</label>
+            </value>
+            <value>
+                <fullName>Australis</fullName>
+                <default>false</default>
+                <label>Australis</label>
+            </value>
+            <value>
+                <fullName>APD</fullName>
+                <default>false</default>
+                <label>APD</label>
+            </value>
+            <value>
+                <fullName>Adelaide Crane Trucks</fullName>
+                <default>false</default>
+                <label>Adelaide Crane Trucks</label>
+            </value>
+            <value>
+                <fullName>Customer Collection</fullName>
+                <default>false</default>
+                <label>Customer Collection</label>
+            </value>
+            <value>
+                <fullName>Sprint Freight</fullName>
+                <default>false</default>
+                <label>Sprint Freight</label>
+            </value>
+            <value>
+                <fullName>Terrain Group</fullName>
+                <default>false</default>
+                <label>Terrain Group</label>
+            </value>
+            <value>
+                <fullName>TNT</fullName>
+                <default>false</default>
+                <label>TNT</label>
+            </value>
+            <value>
+                <fullName>Startrack</fullName>
+                <default>false</default>
+                <label>Startrack</label>
+            </value>
+            <value>
+                <fullName>Northline</fullName>
+                <default>false</default>
+                <label>Northline</label>
+            </value>
+            <value>
+                <fullName>Felix</fullName>
+                <default>false</default>
+                <label>Felix</label>
+            </value>
+            <value>
+                <fullName>Toll</fullName>
+                <default>false</default>
+                <label>Toll</label>
+            </value>
+            <value>
+                <fullName>Mohamed</fullName>
+                <default>false</default>
+                <label>Mohamed</label>
+            </value>
+            <value>
+                <fullName>City Crane Trucks</fullName>
+                <default>false</default>
+                <label>City Crane Trucks</label>
+            </value>
+            <value>
+                <fullName>Bays Removals</fullName>
+                <default>false</default>
+                <label>Bays Removals</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Ace It Couriers</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ace It Couriers</label>
+            </value>
+            <value>
+                <fullName>Ausstar</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ausstar</label>
+            </value>
+            <value>
+                <fullName>Camerons</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Camerons</label>
+            </value>
+            <value>
+                <fullName>Colin - Coast to Country</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Colin - Coast to Country</label>
+            </value>
+            <value>
+                <fullName>Irvines</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Irvines</label>
+            </value>
+            <value>
+                <fullName>Jet</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Jet</label>
+            </value>
+            <value>
+                <fullName>McEvoys</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>McEvoys</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>Pickering Transport</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pickering Transport</label>
+            </value>
+            <value>
+                <fullName>SA Taxi Trucks</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SA Taxi Trucks</label>
+            </value>
+            <value>
+                <fullName>Southern Trading</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Southern Trading</label>
+            </value>
+            <value>
+                <fullName>Trouble Free</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trouble Free</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

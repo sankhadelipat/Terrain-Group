@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Freight_Company_6__c</fullName>
+    <label>Freight Company 6</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Toll</fullName>
+                <default>false</default>
+                <label>Toll</label>
+            </value>
+            <value>
+                <fullName>Australia Post</fullName>
+                <default>false</default>
+                <label>Australia Post</label>
+            </value>
+            <value>
+                <fullName>Fed Ex</fullName>
+                <default>false</default>
+                <label>Fed Ex</label>
+            </value>
+            <value>
+                <fullName>TNT</fullName>
+                <default>false</default>
+                <label>TNT</label>
+            </value>
+            <value>
+                <fullName>Lysaght</fullName>
+                <default>false</default>
+                <label>Lysaght</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Astros	Astros</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Astros	Astros</label>
+            </value>
+            <value>
+                <fullName>Camerons</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Camerons</label>
+            </value>
+            <value>
+                <fullName>DHL</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>DHL</label>
+            </value>
+            <value>
+                <fullName>Jet</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Jet</label>
+            </value>
+            <value>
+                <fullName>K + N</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>K + N</label>
+            </value>
+            <value>
+                <fullName>Mainfreight</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Mainfreight</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>Northline</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Northline</label>
+            </value>
+            <value>
+                <fullName>Plasteel</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Plasteel</label>
+            </value>
+            <value>
+                <fullName>Rangeview Transport</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Rangeview Transport</label>
+            </value>
+            <value>
+                <fullName>Shaws Transport</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Shaws Transport</label>
+            </value>
+            <value>
+                <fullName>Southern Trading</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Southern Trading</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

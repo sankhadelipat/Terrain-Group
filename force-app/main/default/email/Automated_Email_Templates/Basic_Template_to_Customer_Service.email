@@ -1,0 +1,5 @@
+Greetings,
+
+New quote number has been closed. Its number is {!Quote.QuoteNumber}
+
+Link to Quote: {!Quote.Link}

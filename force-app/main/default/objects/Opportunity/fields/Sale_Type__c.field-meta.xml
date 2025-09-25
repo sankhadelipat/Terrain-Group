@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sale_Type__c</fullName>
+    <label>Sale Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Supply only</fullName>
+                <default>false</default>
+                <label>Supply only</label>
+            </value>
+            <value>
+                <fullName>Supply &amp; installation</fullName>
+                <default>false</default>
+                <label>Supply &amp; installation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

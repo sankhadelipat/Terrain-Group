@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Toll</fullName>
+        <default>false</default>
+        <label>Toll</label>
+    </customValue>
+    <customValue>
+        <fullName>Australia Post</fullName>
+        <default>false</default>
+        <label>Australia Post</label>
+    </customValue>
+    <customValue>
+        <fullName>Fed Ex</fullName>
+        <default>false</default>
+        <label>Fed Ex</label>
+    </customValue>
+    <customValue>
+        <fullName>TNT</fullName>
+        <default>false</default>
+        <label>TNT</label>
+    </customValue>
+    <customValue>
+        <fullName>Lysaght</fullName>
+        <default>false</default>
+        <label>Lysaght</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>N/A</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>N/A</label>
+    </customValue>
+    <customValue>
+        <fullName>Northline</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Northline</label>
+    </customValue>
+    <customValue>
+        <fullName>Plasteel</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Plasteel</label>
+    </customValue>
+    <customValue>
+        <fullName>Astros</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Astros</label>
+    </customValue>
+    <customValue>
+        <fullName>Shaws Transport</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Shaws Transport</label>
+    </customValue>
+    <customValue>
+        <fullName>Southern Trading</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Southern Trading</label>
+    </customValue>
+    <customValue>
+        <fullName>Rangeview Transport</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Rangeview Transport</label>
+    </customValue>
+    <customValue>
+        <fullName>Camerons</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Camerons</label>
+    </customValue>
+    <customValue>
+        <fullName>DHL</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DHL</label>
+    </customValue>
+    <customValue>
+        <fullName>Jet</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Jet</label>
+    </customValue>
+    <customValue>
+        <fullName>K + N</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>K + N</label>
+    </customValue>
+    <customValue>
+        <fullName>Mainfreight</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mainfreight</label>
+    </customValue>
+    <description>Created by BDD</description>
+    <masterLabel>Freight Company</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

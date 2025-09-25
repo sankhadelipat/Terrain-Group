@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_to_Customer_required</fullName>
+    <active>true</active>
+    <description>Created by BDD</description>
+    <errorConditionFormula>ISPICKVAL( Status, &apos;Awaiting Feedback&apos;) &amp;&amp; (ISBLANK(TEXT(Carrier_To_Customer__c)) || ISBLANK( Transport_Date__c ) || ISBLANK( Transport_Document_Number__c ) || ISBLANK( Customer_Delivery_Date_Received__c ))</errorConditionFormula>
+    <errorDisplayField>Carrier_To_Customer__c</errorDisplayField>
+    <errorMessage>Carrier To Customer, Transportation Date, Transportation Document Number and Customer Delivery Date Received
+ is required</errorMessage>
+</ValidationRule>

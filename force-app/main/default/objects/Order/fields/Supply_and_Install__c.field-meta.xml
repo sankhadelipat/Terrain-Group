@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supply_and_Install__c</fullName>
+    <defaultValue>false</defaultValue>
+    <label>Supply and Install</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

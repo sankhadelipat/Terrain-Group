@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QA_Rep__c</fullName>
+    <label>QA Rep</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>JS</fullName>
+                <default>false</default>
+                <label>JS</label>
+            </value>
+            <value>
+                <fullName>BS</fullName>
+                <default>false</default>
+                <label>BS</label>
+            </value>
+            <value>
+                <fullName>SRS</fullName>
+                <default>false</default>
+                <label>SRS</label>
+            </value>
+            <value>
+                <fullName>JG</fullName>
+                <default>false</default>
+                <label>JG</label>
+            </value>
+            <value>
+                <fullName>CS</fullName>
+                <default>false</default>
+                <label>CS</label>
+            </value>
+            <value>
+                <fullName>LB</fullName>
+                <default>false</default>
+                <label>LB</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>TG QA Staff</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TG QA Staff</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

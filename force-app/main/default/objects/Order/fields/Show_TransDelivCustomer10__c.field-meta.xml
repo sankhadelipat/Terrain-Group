@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Show_TransDelivCustomer10__c</fullName>
+    <formula>OR(
+NOT(ISBLANK(TEXT(Carrier_To_Customer_9__c))),
+NOT(ISBLANK(Transportation_Document_Number_9__c)),
+NOT(ISBLANK(Transport_Delivery_to_Customer_Notes_9__c)),
+NOT(ISBLANK(Carrier_To_Customer_9_Other__c)),
+NOT(ISBLANK(Transportation_Date_9__c)),
+NOT(ISBLANK(Delivery_Date_9__c))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Show_TransDelivCustomer10</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

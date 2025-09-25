@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Entity__c</fullName>
+    <label>Company Entity</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Terrain Water</fullName>
+                <default>false</default>
+                <label>Terrain Water</label>
+            </value>
+            <value>
+                <fullName>Terrain Elements</fullName>
+                <default>false</default>
+                <label>Terrain Elements</label>
+            </value>
+            <value>
+                <fullName>Terrain Assist</fullName>
+                <default>false</default>
+                <label>Terrain Assist</label>
+            </value>
+            <value>
+                <fullName>Street Furniture Australia</fullName>
+                <default>false</default>
+                <label>Street Furniture Australia</label>
+            </value>
+            <value>
+                <fullName>MODUS Toilet Building</fullName>
+                <default>false</default>
+                <label>MODUS Toilet Building</label>
+            </value>
+            <value>
+                <fullName>Spare Parts</fullName>
+                <default>false</default>
+                <label>Spare Parts</label>
+            </value>
+            <value>
+                <fullName>Italian Lab</fullName>
+                <default>false</default>
+                <label>Italian Lab</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

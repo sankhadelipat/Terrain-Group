@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supplier_6__c</fullName>
+    <label>Supplier 6</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gossi Park</fullName>
+                <default>false</default>
+                <label>Gossi Park</label>
+            </value>
+            <value>
+                <fullName>Britex</fullName>
+                <default>false</default>
+                <label>Britex</label>
+            </value>
+            <value>
+                <fullName>AMS</fullName>
+                <default>false</default>
+                <label>AMS</label>
+            </value>
+            <value>
+                <fullName>Italian Lab</fullName>
+                <default>false</default>
+                <label>Italian Lab</label>
+            </value>
+            <value>
+                <fullName>3Monkeez</fullName>
+                <default>false</default>
+                <label>3Monkeez</label>
+            </value>
+            <value>
+                <fullName>ProClean</fullName>
+                <default>false</default>
+                <label>ProClean</label>
+            </value>
+            <value>
+                <fullName>Rainware</fullName>
+                <default>false</default>
+                <label>Rainware</label>
+            </value>
+            <value>
+                <fullName>CORA</fullName>
+                <default>false</default>
+                <label>CORA</label>
+            </value>
+            <value>
+                <fullName>Precinct</fullName>
+                <default>false</default>
+                <label>Precinct</label>
+            </value>
+            <value>
+                <fullName>Moduplay</fullName>
+                <default>false</default>
+                <label>Moduplay</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Green Plate</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Green Plate</label>
+            </value>
+            <value>
+                <fullName>Modus</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Modus</label>
+            </value>
+            <value>
+                <fullName>Plasteel</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Plasteel</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

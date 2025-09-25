@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ShowClaim5__c</fullName>
+    <formula>OR(
+  Claim_4_Amount__c &gt; 0,
+  NOT(ISBLANK(Claim_4_Invoice_Number__c)),
+  NOT(ISBLANK(Claim_4_Date__c)),
+  NOT(ISBLANK(Claim_4_Invoice_Date_Paid__c)),
+  Claim_4_Updated_System__c &gt; 0
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>ShowClaim5</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

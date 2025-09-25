@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Gossi Park</fullName>
+        <default>false</default>
+        <label>Gossi Park</label>
+    </customValue>
+    <customValue>
+        <fullName>Britex</fullName>
+        <default>false</default>
+        <label>Britex</label>
+    </customValue>
+    <customValue>
+        <fullName>AMS</fullName>
+        <default>false</default>
+        <label>AMS</label>
+    </customValue>
+    <customValue>
+        <fullName>Italian Lab</fullName>
+        <default>false</default>
+        <label>Italian Lab</label>
+    </customValue>
+    <customValue>
+        <fullName>3Monkeez</fullName>
+        <default>false</default>
+        <label>3Monkeez</label>
+    </customValue>
+    <customValue>
+        <fullName>ProClean</fullName>
+        <default>false</default>
+        <label>ProClean</label>
+    </customValue>
+    <customValue>
+        <fullName>Rainware</fullName>
+        <default>false</default>
+        <label>Rainware</label>
+    </customValue>
+    <customValue>
+        <fullName>CORA</fullName>
+        <default>false</default>
+        <label>CORA</label>
+    </customValue>
+    <customValue>
+        <fullName>Precinct</fullName>
+        <default>false</default>
+        <label>Precinct</label>
+    </customValue>
+    <customValue>
+        <fullName>Moduplay</fullName>
+        <default>false</default>
+        <label>Moduplay</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Green Plate</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Green Plate</label>
+    </customValue>
+    <customValue>
+        <fullName>Plasteel</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Plasteel</label>
+    </customValue>
+    <customValue>
+        <fullName>Modus</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Modus</label>
+    </customValue>
+    <masterLabel>Supplier</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

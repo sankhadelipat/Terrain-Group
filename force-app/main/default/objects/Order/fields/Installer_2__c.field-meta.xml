@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Installer_2__c</fullName>
+    <label>Installer 2</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Outdoor Flair</fullName>
+                <default>false</default>
+                <label>Outdoor Flair</label>
+            </value>
+            <value>
+                <fullName>PDF</fullName>
+                <default>false</default>
+                <label>PDF</label>
+            </value>
+            <value>
+                <fullName>G1 Constructions</fullName>
+                <default>false</default>
+                <label>G1 Constructions</label>
+            </value>
+            <value>
+                <fullName>SA Concrete Solutions</fullName>
+                <default>false</default>
+                <label>SA Concrete Solutions</label>
+            </value>
+            <value>
+                <fullName>RCG Electrical</fullName>
+                <default>false</default>
+                <label>RCG Electrical</label>
+            </value>
+            <value>
+                <fullName>Platinum Concrete</fullName>
+                <default>false</default>
+                <label>Platinum Concrete</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

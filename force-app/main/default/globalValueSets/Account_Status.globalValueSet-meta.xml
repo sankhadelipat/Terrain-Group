@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Active</fullName>
+        <default>true</default>
+        <label>Active</label>
+    </customValue>
+    <customValue>
+        <fullName>Blacklisted</fullName>
+        <default>false</default>
+        <label>Blacklisted</label>
+    </customValue>
+    <customValue>
+        <fullName>Inactive</fullName>
+        <default>false</default>
+        <label>Inactive</label>
+    </customValue>
+    <description>Created by BDD</description>
+    <masterLabel>Account Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quote_is_required</fullName>
+    <active>true</active>
+    <description>Created by BDD</description>
+    <errorConditionFormula>ISPICKVAL( Status, &apos;Awaiting Feedback&apos;) &amp;&amp; ISBLANK(Parent_Quote__c )</errorConditionFormula>
+    <errorDisplayField>Parent_Quote__c</errorDisplayField>
+    <errorMessage>Quote is required</errorMessage>
+</ValidationRule>
