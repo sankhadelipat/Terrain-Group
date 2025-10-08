@@ -16,7 +16,16 @@ public class MailchimpContactSyncQueueable implements Queueable, Database.Allows
         List<Contact> contactsToSync = new List<Contact>();
         // Query Contacts with neessary fields
         List<Contact> contacts = [
-            SELECT Id, Email, FirstName, LastName, Mailchimp_Contact_ID__c, Mailchimp_Subscriber_Hash__c
+            SELECT
+                Id,
+                Email,
+                FirstName,
+                LastName,
+                AccountId,
+                Account.Name,
+                Phone,
+                Mailchimp_Contact_ID__c,
+                Mailchimp_Subscriber_Hash__c
             FROM Contact
             WHERE Id IN :recordIds
         ];
@@ -50,6 +59,14 @@ public class MailchimpContactSyncQueueable implements Queueable, Database.Allows
                         'status_if_new' => 'subscribed',
                         'merge_fields' => new Map<String, String>{ 'FNAME' => con.FirstName, 'LNAME' => con.LastName }
                     };
+
+                    // Optionally add phone and company if available
+                    if (String.isNotBlank(con.Phone)) {
+                        ((Map<String, String>) body.get('merge_fields')).put('PHONE', con.Phone);
+                    }
+                    // if (con.AccountId != null && String.isNotBlank(con.Account.Name)) {
+                    //     ((Map<String, String>) body.get('merge_fields')).put('COMPANY', con.Account.Name);
+                    // }
 
                     String jsonBody = JSON.serialize(body);
 
