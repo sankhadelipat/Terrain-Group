@@ -59,7 +59,7 @@ public class MailchimpContactTagSyncQueueable implements Queueable, Database.All
 
                 HttpResponse res = http.send(req);
 
-                if (res.getStatusCode() == 200) {
+                if (res.getStatusCode() == 204) {
                     System.debug('Tags synced successfully for contact: ' + con.Id);
                 } else {
                     System.debug(
