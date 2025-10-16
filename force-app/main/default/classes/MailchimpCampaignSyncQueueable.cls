@@ -2,9 +2,9 @@ public class MailchimpCampaignSyncQueueable implements Queueable, Database.Allow
     private Mailchimp_Auth__c auth = Mailchimp_Auth__c.getOrgDefaults();
     private String API_KEY = auth.Mailchimp_API_Key__c;
     private String BASE_URL = auth.Mailchimp_Base_URL__c;
-    private String LIST_ID = '23ad32226b';
-    private static final String DEFAULT_FROM_NAME = 'Your Company';
-    private static final String DEFAULT_FROM_EMAIL = 'sankha.delipat@gmail.com';
+    private String LIST_ID = System.Label.MailChimpAudienceId;
+    private static final String DEFAULT_FROM_NAME = System.Label.MailChimpDefaultFromName;
+    private static final String DEFAULT_FROM_EMAIL = System.Label.MailChimpDefaultFromEmail;
 
     private String operation; // 'INSERT', 'UPDATE', 'DELETE' OR 'UPDATE_MEMBERS'
     private Set<Id> recordIds;

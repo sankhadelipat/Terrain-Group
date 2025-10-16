@@ -2,7 +2,7 @@ public class MailchimpContactTagSyncQueueable implements Queueable, Database.All
     private Mailchimp_Auth__c auth = Mailchimp_Auth__c.getOrgDefaults();
     private String API_KEY = auth.Mailchimp_API_Key__c;
     private String BASE_URL = auth.Mailchimp_Base_URL__c;
-    private String LIST_ID = '23ad32226b';
+    private String LIST_ID = System.Label.MailChimpAudienceId;
 
     private String action; // 'ADD' or 'REMOVE'
     private Map<Id, List<String>> contactTagsMap;

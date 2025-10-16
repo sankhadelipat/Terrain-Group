@@ -5,9 +5,9 @@ public class MailchimpContactTagPullScheduler implements Schedulable {
         Database.executeBatch(batchJob, batchSize);
     }
 
-    public static void scheduleBatch() {
-        String jobName = 'MailchimpContactTagPullBatchJob';
-        String cronExp = '0 15 * * * ?'; // Every 15 minutes
+    public static void scheduleContactTagSync() {
+        String jobName = 'MailchimpContactTagSync';
+        String cronExp = '0 20 * * * ?'; // Every 20 minutes
         MailchimpContactTagPullScheduler schedule = new MailchimpContactTagPullScheduler();
         System.schedule(jobName, cronExp, schedule);
     }

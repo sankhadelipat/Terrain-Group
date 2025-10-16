@@ -2,7 +2,7 @@ public class MailchimpCampaignManager {
     private static Mailchimp_Auth__c auth = Mailchimp_Auth__c.getOrgDefaults();
     private static String API_KEY = auth.Mailchimp_API_Key__c;
     private static String BASE_URL = auth.Mailchimp_Base_URL__c;
-    private static String LIST_ID = '23ad32226b';
+    private static String LIST_ID = System.Label.MailChimpAudienceId;
 
     // Create or update segment for Salesforce campaign
     public static String createOrUpdateCampaignSegment(
