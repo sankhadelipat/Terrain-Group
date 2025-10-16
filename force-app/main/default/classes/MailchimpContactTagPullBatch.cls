@@ -12,83 +12,128 @@ public class MailchimpContactTagPullBatch implements Database.Batchable<SObject>
     public Database.QueryLocator start(Database.BatchableContext bc) {
         return Database.getQueryLocator(
             [
-                SELECT Id, Email, Tags__c, Mailchimp_Subscriber_Hash__c
-                FROM Contact
-                WHERE Email != NULL
+                SELECT Id, Name, Mailchimp_Tag_ID__c
+                FROM Tag__c
+                WHERE Mailchimp_Tag_ID__c != NULL
             ]
         );
     }
 
-    public void execute(Database.BatchableContext bc, List<Contact> scope) {
-        List<Contact> contactsToUpdate = new List<Contact>();
+    public void execute(Database.BatchableContext bc, List<Tag__c> scope) {
+        List<Tag__c> TagsToUpdate = new List<Tag__c>();
+        List<Contact_Tag__c> ContactTagsToInsert = new List<Contact_Tag__c>();
+        List<Contact_Tag__c> ContactTagsToDelete = new List<Contact_Tag__c>();
 
-        for (Contact con : scope) {
+        for (Tag__c tag : scope) {
             try {
-                // Derive subscriber hash
-                String subscriberHash = !String.isBlank(con.Mailchimp_Subscriber_Hash__c)
-                    ? con.Mailchimp_Subscriber_Hash__c
-                    : generateMD5Hash(con.Email.toLowerCase());
+                // Get existing Contact emails for this tag
+                Map<String, Contact_Tag__c> existingContactTags = getContactTagsMap(tag.Id);
+                Set<String> existingContactEmails = existingContactTags.keySet();
 
-                Http http = new Http();
-                HttpRequest req = new HttpRequest();
-                req.setMethod('GET');
-                req.setEndpoint(BASE_URL + '/lists/' + LIST_ID + '/members/' + subscriberHash);
-                req.setHeader('Content-Type', 'application/json');
-                req.setHeader('Authorization', 'apikey ' + API_KEY);
-                HttpResponse res = http.send(req);
+                // Fetch Mailchimp contact emails for this tag
+                Set<String> newContactEmails = MailchimpCampaignManager.getSegmentMembers(tag.Mailchimp_Tag_ID__c);
 
-                if (res.getStatusCode() == 200) {
-                    Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
-                    List<Object> tags = (List<Object>) responseMap.get('tags');
-
-                    Set<String> tagNames = new Set<String>();
-                    for (Object tagObj : tags) {
-                        Map<String, Object> tagMap = (Map<String, Object>) tagObj;
-                        String tagName = (String) tagMap.get('name');
-                        tagNames.add(tagName);
-                    }
-
-                    Set<String> existingTagNames = new Set<String>();
-                    if (!String.isBlank(con.Tags__c)) {
-                        existingTagNames = new Set<String>(con.Tags__c.split(';'));
-                    }
-
-                    if (!tagNames.equals(existingTagNames)) {
-                        String tagsString = String.join(tagNames, ';');
-                        Contact updatedCon = new Contact(Id = con.Id, Tags__c = tagsString);
-                        contactsToUpdate.add(updatedCon);
-                    }
-
+                // Check if sync is needed
+                if (existingContactEmails.equals(newContactEmails)) {
+                    tag.Sync_Status__c = 'Synced';
+                    tag.Last_Sync_Date__c = System.now();
+                    TagsToUpdate.add(tag);
                     successCount++;
-                } else {
-                    errorCount++;
-                    errorMessages.add(
-                        'Failed to fetch member for Contact ID ' +
-                            con.Id +
-                            ': ' +
-                            res.getStatusCode() +
-                            ' - ' +
-                            res.getBody()
-                    );
+                    continue;
                 }
+
+                // Find emails to addd
+                Set<String> contactsToAdd = new Set<String>();
+                for (String email : newContactEmails) {
+                    if (!existingContactEmails.contains(email)) {
+                        contactsToAdd.add(email);
+                    }
+                }
+
+                // Find emails to remove
+                Set<String> contactsToRemove = new Set<String>();
+                for (String email : existingContactEmails) {
+                    if (!newContactEmails.contains(email)) {
+                        contactsToRemove.add(email);
+                    }
+                }
+
+                // Create new Contact_Tag__c records for emails to add
+                if (!contactsToAdd.isEmpty()) {
+                    Map<String, Id> emailToContactId = getContactIdsByEmails(new List<String>(contactsToAdd));
+
+                    for (String email : contactsToAdd) {
+                        if (emailToContactId.get(email) == null) {
+                            Contact_Tag__c contactTag = new Contact_Tag__c();
+                            contactTag.Tag__c = tag.Id;
+                            contactTag.Contact__c = emailToContactId.get(email);
+                            ContactTagsToInsert.add(contactTag);
+                        } else {
+                            System.debug('No Contact found for email: ' + email);
+                        }
+                    }
+                }
+
+                // Remove Contact_Tag__c records for emails to remove
+                if (!contactsToRemove.isEmpty()) {
+                    for (String email : contactsToRemove) {
+                        if (existingContactTags.get(email) != null) {
+                            ContactTagsToDelete.add(existingContactTags.get(email));
+                        }
+                    }
+                }
+
+                // Update tag sync status
+                tag.Sync_Status__c = 'Synced';
+                tag.Last_Sync_Date__c = System.now();
+                TagsToUpdate.add(tag);
+
+                successCount++;
+
+                System.debug('Synced tag: ' + tag.Id);
+
+                // Add delay between callouts
+                addCalloutDelay();
             } catch (Exception e) {
+                System.debug('Error syncing tag: ' + tag.Id + ' - ' + e.getMessage());
+                Tag__c failedTag = new Tag__c(
+                    Id = tag.Id,
+                    Sync_Status__c = 'Failed',
+                    Last_Sync_Date__c = Datetime.now()
+                );
+                TagsToUpdate.add(failedTag);
+
+                errorMessages.add('Error syncing tag: ' + tag.Id + ' - ' + e.getMessage());
                 errorCount++;
-                errorMessages.add('Error processing Contact ID ' + con.Id + ': ' + e.getMessage());
             } finally {
                 processedCount++;
             }
         }
 
-        if (!contactsToUpdate.isEmpty()) {
-            try {
-                update contactsToUpdate;
-            } catch (DmlException dmlEx) {
-                for (Contact c : contactsToUpdate) {
-                    errorMessages.add('DML Error updating Contact ID ' + c.Id + ': ' + dmlEx.getMessage());
-                }
-            } finally {
-                contactsToUpdate.clear();
+        try {
+            if (!TagsToUpdate.isEmpty()) {
+                update TagsToUpdate;
             }
+            if (!ContactTagsToInsert.isEmpty()) {
+                insert ContactTagsToInsert;
+            }
+            if (!ContactTagsToDelete.isEmpty()) {
+                delete ContactTagsToDelete;
+            }
+        } catch (DmlException dmlEx) {
+            for (Tag__c tag : TagsToUpdate) {
+                errorMessages.add('Error updating tag ' + tag.Name + ': ' + dmlEx.getMessage());
+            }
+            for (Contact_Tag__c contactTag : ContactTagsToInsert) {
+                errorMessages.add('Error inserting contact tag: ' + contactTag.Id + ': ' + dmlEx.getMessage());
+            }
+            for (Contact_Tag__c contactTag : ContactTagsToDelete) {
+                errorMessages.add('Error deleting contact tag: ' + contactTag.Id + ': ' + dmlEx.getMessage());
+            }
+        } finally {
+            TagsToUpdate.clear();
+            ContactTagsToInsert.clear();
+            ContactTagsToDelete.clear();
         }
     }
 
@@ -96,9 +141,9 @@ public class MailchimpContactTagPullBatch implements Database.Batchable<SObject>
         System.debug(
             'Batch Process Completed. Processed: ' +
                 processedCount +
-                ', Success: ' +
+                ' Success: ' +
                 successCount +
-                ', Errors: ' +
+                ' Errors: ' +
                 errorCount
         );
 
@@ -126,10 +171,58 @@ public class MailchimpContactTagPullBatch implements Database.Batchable<SObject>
         }
     }
 
-    // Helper method to generate MD5 hash for Mailchimp member ID
-    private String generateMD5Hash(String input) {
-        Blob targetBlob = Blob.valueOf(input);
-        Blob md5hash = Crypto.generateDigest('MD5', targetBlob);
-        return EncodingUtil.convertToHex(md5hash);
+    private Map<String, Contact_Tag__c> getContactTagsMap(Id tagId) {
+        Map<String, Contact_Tag__c> contactTagsMap = new Map<String, Contact_Tag__c>();
+
+        List<Contact_Tag__c> contacts = [
+            SELECT Id, Contact__r.Email, Contact__c
+            FROM Contact_Tag__c
+            WHERE Tag__c = :tagId
+        ];
+
+        for (Contact_Tag__c contactTag : contacts) {
+            if (contactTag.Contact__r.Email != null && contactTag.Contact__c != null) {
+                String normalizedEmail = contactTag.Contact__r.Email.toLowerCase();
+                contactTagsMap.put(contactTag.Contact__r.Email, contactTag);
+            }
+        }
+
+        return contactTagsMap;
+    }
+
+    private Map<String, Id> getContactIdsByEmails(List<String> emails) {
+        Map<String, Id> emailToContactId = new Map<String, Id>();
+
+        if (emails.isEmpty()) {
+            return emailToContactId;
+        }
+
+        // Normalize emails for case-insensitive comparison
+        Set<String> normalizedEmails = new Set<String>();
+        for (String email : emails) {
+            normalizedEmails.add(email.toLowerCase());
+        }
+
+        List<Contact> contacts = [
+            SELECT Id, Email
+            FROM Contact
+            WHERE Email IN :normalizedEmails
+        ];
+
+        for (Contact con : contacts) {
+            emailToContactId.put(con.Email.toLowerCase(), con.Id);
+        }
+
+        return emailToContactId;
+    }
+
+    private void addCalloutDelay() {
+        if (Limits.getCallouts() < Limits.getLimitCallouts()) {
+            Integer delay = 100; // 100ms delay
+            Long startingTime = System.currentTimeMillis();
+            while (System.currentTimeMillis() - startingTime < delay) {
+                // Busy wait for the specified delay
+            }
+        }
     }
 }

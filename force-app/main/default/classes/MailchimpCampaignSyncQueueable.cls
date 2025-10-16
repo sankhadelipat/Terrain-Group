@@ -6,7 +6,7 @@ public class MailchimpCampaignSyncQueueable implements Queueable, Database.Allow
     private static final String DEFAULT_FROM_NAME = 'Your Company';
     private static final String DEFAULT_FROM_EMAIL = 'sankha.delipat@gmail.com';
 
-    private String operation; // 'INSERT', 'UPDATE' or 'DELETE'
+    private String operation; // 'INSERT', 'UPDATE', 'DELETE' OR 'UPDATE_MEMBERS'
     private Set<Id> recordIds;
 
     public MailchimpCampaignSyncQueueable(String op, Set<Id> ids) {

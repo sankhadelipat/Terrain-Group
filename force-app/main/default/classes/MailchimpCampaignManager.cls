@@ -63,7 +63,7 @@ public class MailchimpCampaignManager {
     }
 
     // Update segment members (add/remove as needed)
-    private static void updateSegmentMembers(String segmentId, List<String> newMemberEmails) {
+    public static void updateSegmentMembers(String segmentId, List<String> newMemberEmails) {
         try {
             // Get current segment members
             Set<String> currentMembers = getSegmentMembers(segmentId);

@@ -1,18 +1,19 @@
-trigger MailchimpContactTagSyncTrigger on Contact(after insert, after update) {
-    if (Trigger.isAfter && (Trigger.isInsert || Trigger.isUpdate)) {
-        List<Contact> contactsToProcess = new List<Contact>();
+trigger MailchimpContactTagSyncTrigger on Contact_Tag__c(after insert, after update, after delete, after undelete) {
+    if (Trigger.isAfter) {
+        Set<Id> tagIds = new Set<Id>();
 
-        for (Contact con : Trigger.new) {
-            Contact oldCon = Trigger.oldMap != null ? Trigger.oldMap.get(con.Id) : null;
-
-            // Check if tags changed or it's a new contact
-            if (oldCon == null || con.Tags__c != oldCon.Tags__c) {
-                contactsToProcess.add(con);
+        if (Trigger.isInsert || Trigger.isUndelete || Trigger.isUpdate) {
+            for (Contact_Tag__c ct : Trigger.new) {
+                tagIds.add(ct.Tag__c);
+            }
+        } else if (Trigger.isDelete) {
+            for (Contact_Tag__c ct : Trigger.old) {
+                tagIds.add(ct.Tag__c);
             }
         }
 
-        if (!contactsToProcess.isEmpty()) {
-            MailchimpContactTagSyncHandler.syncTagsToMailchimp(contactsToProcess, Trigger.oldMap);
+        if (!tagIds.isEmpty()) {
+            System.enqueueJob(new MailchimpTagSyncQueueable('TAG_CONTACTS', tagIds));
         }
     }
 }
