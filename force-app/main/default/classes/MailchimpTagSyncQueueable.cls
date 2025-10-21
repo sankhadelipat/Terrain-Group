@@ -14,11 +14,14 @@ public class MailchimpTagSyncQueueable implements Queueable, Database.AllowsCall
 
     public void execute(QueueableContext context) {
         List<Tag__c> tagsToSync = new List<Tag__c>();
+        // List<Tag__c> tagsToDelete = new List<Tag__c>();
+
         // Query Tags with neessary fields
         List<Tag__c> tags = [
             SELECT Id, Name, Mailchimp_Tag_ID__c
             FROM Tag__c
             WHERE Id IN :recordIds
+            ALL ROWS
         ];
 
         try {
@@ -33,8 +36,9 @@ public class MailchimpTagSyncQueueable implements Queueable, Database.AllowsCall
                     List<String> memberEmails = MailchimpTagManager.getTagMemberEmails(tag.Id);
 
                     String requestBody = JSON.serialize(
-                        new Map<String, Object>{ 'name' => tag.Name, 'satic_segment' => memberEmails }
+                        new Map<String, Object>{ 'name' => tag.Name, 'static_segment' => memberEmails }
                     );
+                    System.debug('Tag create JSON body: ' + requestBody);
 
                     // Create tag in Mailchimp
                     req.setEndpoint(BASE_URL + '/lists/' + LIST_ID + '/segments');
@@ -43,14 +47,20 @@ public class MailchimpTagSyncQueueable implements Queueable, Database.AllowsCall
                     req.setMethod('POST');
                     req.setBody(requestBody);
                 } else if (operation == 'TAG_CONTACTS') {
+                    if (String.isBlank(tag.Mailchimp_Tag_ID__c)) {
+                        System.debug('Skipping contact assign for tag with no Mailchimp ID: ' + tag.Id);
+                        continue;
+                    }
+                    
                     // Get all tag member emails
                     List<String> memberEmails = MailchimpTagManager.getTagMemberEmails(tag.Id);
-
                     // Update tag members in Mailchimp
                     MailchimpCampaignManager.updateSegmentMembers(tag.Mailchimp_Tag_ID__c, memberEmails);
+
+                    continue;
                 } else if (operation == 'UPDATE') {
                     if (String.isBlank(tag.Mailchimp_Tag_ID__c)) {
-                        System.debug('Skipping delete for tag with no Mailchimp ID: ' + tag.Id);
+                        System.debug('Skipping update for tag with no Mailchimp ID: ' + tag.Id);
                         continue;
                     }
                     // Update tag in Mailchimp
@@ -75,7 +85,7 @@ public class MailchimpTagSyncQueueable implements Queueable, Database.AllowsCall
 
                 HttpResponse res = http.send(req);
 
-                if (res.getStatusCode() == 200 || res.getStatusCode() == 204) {
+                if (res.getStatusCode() == 200) {
                     System.debug('Mailchimp Tag Sync Response: ' + res.getBody());
                     Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
                     String mailchimpTagId = String.valueOf(responseMap.get('id'));
@@ -89,8 +99,10 @@ public class MailchimpTagSyncQueueable implements Queueable, Database.AllowsCall
                         );
                         tagsToSync.add(newTag);
                     }
-                    //   else if (operation == 'DELETE') {
-                    //   }
+                } else if (res.getStatusCode() == 204) {
+                    // if (operation == 'DELETE') {
+                    //     tagsToDelete.add(tag);
+                    // }
                 } else {
                     Tag__c failedTag = new Tag__c(
                         Name = tag.Name,
@@ -100,13 +112,17 @@ public class MailchimpTagSyncQueueable implements Queueable, Database.AllowsCall
                     tagsToSync.add(failedTag);
 
                     System.debug('Error syncing tag: ' + res.getBody());
-                    throw new CalloutException('Error syncing tag');
+                    throw new CalloutException('Error syncing tag' + res.getBody());
                 }
             }
 
             if (!tagsToSync.isEmpty()) {
                 update tagsToSync;
             }
+
+            // if (!tagsToDelete.isEmpty()) {
+            //     Database.emptyRecycleBin(tagsToDelete);
+            // }
         } catch (Exception e) {
             System.debug('Error syncing tags: ' + e.getMessage());
 

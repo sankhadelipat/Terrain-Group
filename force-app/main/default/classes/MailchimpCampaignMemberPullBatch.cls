@@ -14,7 +14,7 @@ public class MailchimpCampaignMemberPullBatch implements Database.Batchable<SObj
             [
                 SELECT Id, Name, Mailchimp_Campaign_ID__c, Mailchimp_Segment_ID__c, Mailchimp_Web_ID__c, Sync_Status__c
                 FROM Campaign
-                WHERE Mailchimp_Campaign_ID__c != NULL AND Mailchimp_Segment_ID__c != NULL AND IsActive = TRUE
+                WHERE Mailchimp_Campaign_ID__c != NULL AND Mailchimp_Segment_ID__c != NULL
             ]
         );
     }

@@ -132,6 +132,7 @@ public class MailchimpTagPullBatch implements Database.Batchable<String>, Databa
             Http http = new Http();
             HttpRequest req = new HttpRequest();
             req.setEndpoint(BASE_URL + '/lists/' + LIST_ID + '/segments?count=1000&fields=segments.id&type=static');
+            req.setMethod('GET');
             req.setHeader('Content-Type', 'application/json');
             req.setHeader('Authorization', 'apikey ' + API_KEY);
             HttpResponse res = http.send(req);

@@ -16,6 +16,8 @@ public class MailchimpCampaignSyncQueueable implements Queueable, Database.Allow
 
     public void execute(QueueableContext context) {
         List<Campaign> campaignsToSync = new List<Campaign>();
+        // List<Campaign> campaignsToDelete = new List<Campaign>();
+
         // Query Campaigns with neessary fields
         List<Campaign> campaigns = [
             SELECT
@@ -30,9 +32,11 @@ public class MailchimpCampaignSyncQueueable implements Queueable, Database.Allow
                 ActualCost,
                 Description,
                 Subject__c,
-                Mailchimp_Campaign_ID__c
+                Mailchimp_Campaign_ID__c,
+                Mailchimp_Segment_ID__c
             FROM Campaign
             WHERE Id IN :recordIds
+            ALL ROWS
         ];
 
         try {
@@ -42,60 +46,57 @@ public class MailchimpCampaignSyncQueueable implements Queueable, Database.Allow
             for (Campaign camp : campaigns) {
                 HttpRequest req = new HttpRequest();
 
-                if (operation == 'INSERT' || operation == 'UPDATE_MEMBERS') {
+                if (operation == 'INSERT') {
                     // Get all campaign member emails
                     List<String> memberEmails = getCampaignMemberEmails(camp.Id);
 
                     // Create or update segment with exact campaign members
                     String segmentId = MailchimpCampaignManager.createOrUpdateCampaignSegment(
-                        camp.Id,
                         camp.Name,
+                        camp.Mailchimp_Segment_ID__c,
                         memberEmails
                     );
 
-                    if (camp.Mailchimp_Campaign_ID__c != null) {
-                        // Update existing campaign to use new segment
-                        String requestBody = JSON.serialize(
-                            new Map<String, Object>{
-                                'recipients' => new Map<String, Object>{
-                                    'segment_opts' => new Map<String, Object>{
-                                        'saved_segment_id' => Integer.valueOf(segmentId)
-                                    }
-                                }
+                    // Build the JSON Body for Mailchimp
+                    Map<String, Object> body = new Map<String, Object>{
+                        'type' => 'regular',
+                        'recipients' => new Map<String, Object>{
+                            'list_id' => LIST_ID,
+                            'segment_opts' => new Map<String, Object>{
+                                'saved_segment_id' => Integer.valueOf(segmentId)
                             }
-                        );
+                        },
+                        'settings' => new Map<String, Object>{
+                            'subject_line' => camp.Subject__c != null ? camp.Subject__c : 'No Subject',
+                            'title' => camp.Name != null ? camp.Name : 'Untitled Campaign',
+                            'from_name' => DEFAULT_FROM_NAME,
+                            'reply_to' => DEFAULT_FROM_EMAIL,
+                            'to_name' => '*|FNAME|*',
+                            'auto_footer' => false
+                        }
+                    };
 
-                        req.setEndpoint(BASE_URL + '/campaigns/' + camp.Mailchimp_Campaign_ID__c);
-                        req.setHeader('Content-Type', 'application/json');
-                        req.setHeader('Authorization', 'apikey ' + API_KEY);
-                        req.setMethod('PATCH');
-                        req.setBody(requestBody);
-                    } else {
-                        // Build the JSON Body for Mailchimp
-                        Map<String, Object> body = new Map<String, Object>{
-                            'type' => 'regular',
-                            'recipients' => new Map<String, Object>{
-                                'list_id' => LIST_ID,
-                                'segment_opts' => new Map<String, Object>{
-                                    'saved_segment_id' => Integer.valueOf(segmentId)
-                                }
-                            },
-                            'settings' => new Map<String, Object>{
-                                'subject_line' => camp.Subject__c != null ? camp.Subject__c : 'No Subject',
-                                'title' => camp.Name != null ? camp.Name : 'Untitled Campaign',
-                                'from_name' => DEFAULT_FROM_NAME,
-                                'reply_to' => DEFAULT_FROM_EMAIL,
-                                'to_name' => '*|FNAME|*',
-                                'auto_footer' => false
-                            }
-                        };
+                    req.setEndpoint(BASE_URL + '/campaigns');
+                    req.setHeader('Content-Type', 'application/json');
+                    req.setHeader('Authorization', 'apikey ' + API_KEY);
+                    req.setMethod('POST');
+                    req.setBody(JSON.serialize(body));
+                } else if (operation == 'UPDATE_MEMBERS') {
+                    // Get all campaign member emails
+                    List<String> memberEmails = getCampaignMemberEmails(camp.Id);
+                    // Create or update segment with exact campaign members
+                    String segmentId = MailchimpCampaignManager.createOrUpdateCampaignSegment(
+                        camp.Name,
+                        camp.Mailchimp_Segment_ID__c,
+                        memberEmails
+                    );
 
-                        req.setEndpoint(BASE_URL + '/campaigns');
-                        req.setHeader('Content-Type', 'application/json');
-                        req.setHeader('Authorization', 'apikey ' + API_KEY);
-                        req.setMethod('POST');
-                        req.setBody(JSON.serialize(body));
+                    if (String.isBlank(camp.Mailchimp_Segment_ID__c)) {
+                        camp.Mailchimp_Segment_ID__c = segmentId;
+                        campaignsToSync.add(camp);
                     }
+
+                    continue;
                 } else if (operation == 'UPDATE') {
                     if (String.isBlank(camp.Mailchimp_Campaign_ID__c)) {
                         System.debug('Skipping campaign update with no Mailchimp Campaign ID: ' + camp.Id);
@@ -112,7 +113,7 @@ public class MailchimpCampaignSyncQueueable implements Queueable, Database.Allow
                             'auto_footer' => false
                         }
                     };
-                    req.setEndpoint(BASE_URL + '/campaigns');
+                    req.setEndpoint(BASE_URL + '/campaigns/' + camp.Mailchimp_Campaign_ID__c);
                     req.setHeader('Content-Type', 'application/json');
                     req.setHeader('Authorization', 'apikey ' + API_KEY);
                     req.setMethod('PATCH');
@@ -151,27 +152,26 @@ public class MailchimpCampaignSyncQueueable implements Queueable, Database.Allow
 
                         campaignsToSync.add(updatedCamp);
                     }
-                    //   else if (operation == 'DELETE') {
-                    //   }
+                } else if (res.getStatusCode() == 204) {
+                    // if (operation == 'DELETE') {
+                    //     campaignsToDelete.add(camp);
+                    // }
                 } else {
                     Campaign failedCamp = new Campaign(Id = camp.Id, Sync_Status__c = 'Failed');
                     campaignsToSync.add(failedCamp);
 
-                    System.debug(
-                        'Failed to sync campaign: ' +
-                            camp.Id +
-                            ', Status: ' +
-                            res.getStatusCode() +
-                            ', Body: ' +
-                            res.getBody()
-                    );
-                    throw new CalloutException('Failed to sync campaign: ' + camp.Id);
+                    System.debug('Failed to sync campaign: ' + res.getBody());
+                    throw new CalloutException('Failed to sync campaign: ' + res.getBody());
                 }
             }
 
             if (!campaignsToSync.isEmpty()) {
                 update campaignsToSync;
             }
+
+            // if (!campaignsToDelete.isEmpty()) {
+            //     Database.emptyRecycleBin(campaignsToDelete);
+            // }
         } catch (Exception e) {
             System.debug('Error syncing campaigns: ' + e.getMessage());
 

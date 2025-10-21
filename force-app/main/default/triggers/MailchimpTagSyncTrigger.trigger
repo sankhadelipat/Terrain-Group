@@ -3,7 +3,7 @@ trigger MailchimpTagSyncTrigger on Tag__c(after insert, after update, after dele
         if (Trigger.isInsert || Trigger.isUndelete) {
             System.enqueueJob(new MailchimpTagSyncQueueable('INSERT', Trigger.newMap.keySet()));
         } else if (Trigger.isUpdate) {
-            MailchimpTagSyncHandler.syncTags(Trigger.newMap, Trigger.oldMap);
+            MailchimpTagSyncHandler.syncTags(Trigger.new, Trigger.oldMap);
         } else if (Trigger.isDelete) {
             System.enqueueJob(new MailchimpTagSyncQueueable('DELETE', Trigger.oldMap.keySet()));
         }

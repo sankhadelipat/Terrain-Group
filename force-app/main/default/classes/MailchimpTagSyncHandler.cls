@@ -1,9 +1,7 @@
 public class MailchimpTagSyncHandler {
     // List of fields that trigger Mailchimp sync
     private static final Set<String> SYNC_FIELDS = new Set<String>{
-        'Name',
-        'Active__c'
-        // Add other fields as necessary
+        'Name'
     };
 
     public static void syncTags(List<Tag__c> newTags, Map<Id, Tag__c> oldTagMap) {
@@ -20,7 +18,7 @@ public class MailchimpTagSyncHandler {
                     break;
                 }
             }
-            
+
             if (shouldSync) {
                 tagIdsToProcess.add(newTag.Id);
             }

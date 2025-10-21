@@ -14,6 +14,8 @@ public class MailchimpContactSyncQueueable implements Queueable, Database.Allows
 
     public void execute(QueueableContext context) {
         List<Contact> contactsToSync = new List<Contact>();
+        // List<Contact> contactsToDelete = new List<Contact>();
+
         // Query Contacts with neessary fields
         List<Contact> contacts = [
             SELECT
@@ -23,11 +25,15 @@ public class MailchimpContactSyncQueueable implements Queueable, Database.Allows
                 LastName,
                 AccountId,
                 Account.Name,
+                Account.Industry,
+                AccountStateMC__c,
                 Phone,
+                Mailchimp_Status__c,
                 Mailchimp_Contact_ID__c,
                 Mailchimp_Subscriber_Hash__c
             FROM Contact
             WHERE Id IN :recordIds
+            ALL ROWS
         ];
 
         try {
@@ -48,10 +54,6 @@ public class MailchimpContactSyncQueueable implements Queueable, Database.Allows
                     continue;
                 }
 
-                req.setEndpoint(BASE_URL + '/lists/' + LIST_ID + '/members/' + subscriberHash);
-                req.setHeader('Content-Type', 'application/json');
-                req.setHeader('Authorization', 'apikey ' + API_KEY);
-
                 if (operation == 'UPSERT') {
                     // Build the JSON Body for Mailchimp
                     Map<String, Object> body = new Map<String, Object>{
@@ -64,16 +66,30 @@ public class MailchimpContactSyncQueueable implements Queueable, Database.Allows
                     if (String.isNotBlank(con.Phone)) {
                         ((Map<String, String>) body.get('merge_fields')).put('PHONE', con.Phone);
                     }
-                    // if (con.AccountId != null && String.isNotBlank(con.Account.Name)) {
-                    //     ((Map<String, String>) body.get('merge_fields')).put('COMPANY', con.Account.Name);
-                    // }
+                    if (con.AccountId != null && String.isNotBlank(con.Account.Name)) {
+                        ((Map<String, String>) body.get('merge_fields')).put('COMPANY', con.Account.Name);
+                    }
+                    if (String.isNotBlank(con.Account.Industry)) {
+                        ((Map<String, String>) body.get('merge_fields')).put('INDUSTRY', con.Account.Industry);
+                    }
+                    if (String.isNotBlank(con.AccountStateMC__c)) {
+                        ((Map<String, String>) body.get('merge_fields')).put('STATE', con.AccountStateMC__c);
+                    }
 
                     String jsonBody = JSON.serialize(body);
 
+                    req.setEndpoint(BASE_URL + '/lists/' + LIST_ID + '/members/' + subscriberHash);
+                    req.setHeader('Content-Type', 'application/json');
+                    req.setHeader('Authorization', 'apikey ' + API_KEY);
                     req.setMethod('PUT');
                     req.setBody(jsonBody);
                 } else if (operation == 'DELETE') {
-                    req.setMethod('DELETE');
+                    req.setEndpoint(
+                        BASE_URL + '/lists/' + LIST_ID + '/members/' + subscriberHash + '/actions/delete-permanent'
+                    );
+                    req.setHeader('Content-Type', 'application/json');
+                    req.setHeader('Authorization', 'apikey ' + API_KEY);
+                    req.setMethod('POST');
                 }
 
                 HttpResponse res = http.send(req);
@@ -92,9 +108,10 @@ public class MailchimpContactSyncQueueable implements Queueable, Database.Allows
 
                         contactsToSync.add(updatedCon);
                     }
-                    //   else if (operation == 'DELETE') {
-                    //     con.Mailchimp_Status__c = 'unsubscribed';
-                    //   }
+                } else if (res.getStatusCode() == 204) {
+                    // if (operation == 'DELETE') {
+                    //     contactsToDelete.add(con);
+                    // }
                 } else {
                     throw new CalloutException(
                         'Mailchimp API call failed with status ' + res.getStatusCode() + ': ' + res.getBody()
@@ -106,6 +123,11 @@ public class MailchimpContactSyncQueueable implements Queueable, Database.Allows
             if (!contactsToSync.isEmpty()) {
                 update contactsToSync;
             }
+
+            // Delete Contacts from Mailchimp
+            // if (!contactsToDelete.isEmpty()) {
+            //     Database.emptyRecycleBin(contactsToDelete);
+            // }
         } catch (Exception e) {
             System.debug('Error during Mailchimp sync: ' + e.getMessage());
             Logger__c log = new Logger__c(

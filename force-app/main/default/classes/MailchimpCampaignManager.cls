@@ -6,16 +6,21 @@ public class MailchimpCampaignManager {
 
     // Create or update segment for Salesforce campaign
     public static String createOrUpdateCampaignSegment(
-        String campaignId,
         String campaignName,
+        String segmentId,
         List<String> memberEmails
     ) {
         try {
             // Generate segment name based on Salesforce campaign
-            String segmentName = 'SF_Campaign_' + campaignName.replace(' ', '_') + '_' + campaignId;
+            String segmentName = campaignName + ' | Salesforce';
 
             // Check if segment already exists
-            String existingSegmentId = getSegmentIdByName(segmentName);
+            String existingSegmentId;
+            if (segmentId != null) {
+                existingSegmentId = segmentId;
+            } else {
+                existingSegmentId = getSegmentIdByName(segmentName);
+            }
 
             if (existingSegmentId != null) {
                 // Update existing segment
@@ -31,7 +36,7 @@ public class MailchimpCampaignManager {
     }
 
     // Create new segment with specific members
-    private static String createSegmentWithMembers(String segmentName, List<String> memberEmails) {
+    public static String createSegmentWithMembers(String segmentName, List<String> memberEmails) {
         try {
             Http http = new Http();
             HttpRequest req = new HttpRequest();
@@ -55,7 +60,7 @@ public class MailchimpCampaignManager {
                 return segmentId;
             } else {
                 System.debug('Error creating segment: ' + res.getBody());
-                throw new CalloutException('Error creating segment');
+                throw new CalloutException('Error creating segment: ' + res.getBody());
             }
         } catch (Exception e) {
             throw e;
@@ -125,7 +130,7 @@ public class MailchimpCampaignManager {
                 System.debug('Successfully removed ' + emailsToRemove.size() + ' members from segment');
             } else {
                 System.debug('Error adding/removing members from segment: ' + res.getBody());
-                throw new CalloutException('Error adding/removing members from segment');
+                throw new CalloutException('Error adding/removing members from segment: ' + res.getBody());
             }
         } catch (Exception e) {
             throw e;
@@ -157,7 +162,7 @@ public class MailchimpCampaignManager {
                 }
             } else {
                 System.debug('Error fetching segments: ' + res.getBody());
-                throw new CalloutException('Error fetching segment ID by name');
+                throw new CalloutException('Error fetching segments: ' + res.getBody());
             }
         } catch (Exception e) {
             throw e;
@@ -190,7 +195,7 @@ public class MailchimpCampaignManager {
                 }
             } else {
                 System.debug('Error fetching segment members: ' + res.getBody());
-                throw new CalloutException('Error fetching segment members');
+                throw new CalloutException('Error fetching segment members: ' + res.getBody());
             }
         } catch (Exception e) {
             throw e;

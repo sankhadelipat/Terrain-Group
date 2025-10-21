@@ -65,7 +65,7 @@ public class MailchimpCampaignPullBatch implements Database.Batchable<String>, D
                         : null;
                     String segmentId = extractSegmentId(recipients);
 
-                    String sendTime = responseMap.get('send_time') != null
+                    String sendTime = String.isNotBlank((String) responseMap.get('send_time'))
                         ? (String) responseMap.get('send_time')
                         : null;
                     DateTime sendDateTime = sendTime != null ? DateTime.valueOfGmt(sendTime) : null;

@@ -62,15 +62,8 @@ public class MailchimpContactTagSyncQueueable implements Queueable, Database.All
                 if (res.getStatusCode() == 204) {
                     System.debug('Tags synced successfully for contact: ' + con.Id);
                 } else {
-                    System.debug(
-                        'Failed to sync tags for contact: ' +
-                            con.Id +
-                            ', Status: ' +
-                            res.getStatusCode() +
-                            ', Body: ' +
-                            res.getBody()
-                    );
-                    throw new CalloutException('Failed to sync tags for contact: ' + con.Id);
+                    System.debug('Failed to sync tags for contact: ' + res.getBody());
+                    throw new CalloutException('Failed to sync tags for contact: ' + res.getBody());
                 }
             }
         } catch (Exception e) {

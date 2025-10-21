@@ -9,16 +9,19 @@ public class MailchimpContactSyncHandler {
         // 'Description',
         'FirstName',
         'LastName',
-        // 'AccountId',
-        'Mailchimp_Subscriber_Hash__c',
-        'Mailchimp_Contact_ID__c',
+        'AccountId',
+        // 'Mailchimp_Subscriber_Hash__c',
+        // 'Mailchimp_Contact_ID__c',
         // 'Mailchimp_Status__c',
         // 'OwnerId',
-        'MailingStreet',
-        'MailingCity',
-        'MailingState',
-        'MailingPostalCode',
-        'MailingCountry'
+        // 'MailingStreet',
+        // 'MailingCity',
+        // 'MailingState',
+        // 'MailingPostalCode',
+        // 'MailingCountry',
+        'AccountNameMC__c',
+        'AccountIndustryMC__c',
+        'AccountStateMC__c'
     };
 
     public static void syncContacts(Map<Id, Contact> oldMap, Map<Id, Contact> newMap) {
@@ -42,7 +45,7 @@ public class MailchimpContactSyncHandler {
                 contactIds.add(conId);
             }
         }
-        
+
         if (!contactIds.isEmpty()) {
             // Enqueue the Queueable job to sync contacts
             System.enqueueJob(new MailchimpContactSyncQueueable('UPSERT', contactIds));
